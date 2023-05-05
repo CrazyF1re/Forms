@@ -29,6 +29,7 @@ class Win : public QWidget
 public:
     Win(QWidget *parent = 0);
 protected:
+    QFrame *frame1,*frame2;
     QTextCodec *codec;
     QLabel *label1,*label2;
     Counter *edit1,*edit2;
