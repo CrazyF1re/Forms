@@ -1,5 +1,5 @@
 QT       += core gui
-
+QT       += core5compat
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
@@ -10,13 +10,12 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    widget.cpp
+    win.cpp
 
 HEADERS += \
-    widget.h
+    win.h
 
-FORMS += \
-    widget.ui
+FORMS +=
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
