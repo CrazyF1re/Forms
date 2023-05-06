@@ -26,8 +26,7 @@ void Area::timerEvent(QTimerEvent *event)
  update(); // обновить внешний вид
  }
  else
- QWidget::timerEvent(event); // иначе передать для стандартной
- // обработки
+ QWidget::timerEvent(event); // иначе передать для стандартной обработки
 }
 void Area::hideEvent(QHideEvent *)
 {
