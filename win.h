@@ -27,8 +27,11 @@ class Win : public QWidget
 {
     Q_OBJECT
 public:
-    Win(QWidget *parent = 0);
+    Win();
 protected:
+    QVBoxLayout *layout1, *layout2;
+    QHBoxLayout *hlayout;
+
     QFrame *frame1,*frame2;
     QTextCodec *codec;
     QLabel *label1,*label2;

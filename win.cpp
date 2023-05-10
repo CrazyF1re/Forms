@@ -1,10 +1,13 @@
 #include "win.h"
+#include <iostream>
 
-Win::Win(QWidget *parent)
-    : QWidget(parent)
+Win::Win()
 {
+    try
+    {
     codec = QTextCodec::codecForName("UTF-8");
-    this->setWindowTitle(codec->toUnicode("Счетчик"));
+    setWindowTitle(codec->toUnicode("Счетчик"));
+
     label1 = new QLabel(codec->toUnicode("Cчет по 1"),this);
     label2 = new QLabel(codec->toUnicode("Cчет по 5"),this);
     edit1 = new Counter("0",this);
@@ -14,20 +17,27 @@ Win::Win(QWidget *parent)
 
     frame1 = new QFrame(this);
     frame2 = new QFrame(this);
+    layout1 = new QVBoxLayout(frame1);
+    layout2 = new QVBoxLayout(frame2);
+    hlayout = new QHBoxLayout(this);
+    }
+    catch(std::bad_alloc const&)
+    {
+        std::cout<<"Memory has not been allocated";
+    }
 
 
-    QVBoxLayout *layout1 = new QVBoxLayout(frame1);
     layout1->addWidget(label1);
     layout1->addWidget(edit1);
     layout1->addWidget(calcbutton);
     layout1->addStretch();
-    QVBoxLayout *layout2 = new QVBoxLayout(frame2);
+
     layout2->addWidget(label2);
     layout2->addWidget(edit2);
     layout2->addWidget(exitbutton);
     layout2->addStretch();
 
-    QHBoxLayout *hlayout = new QHBoxLayout(this);
+
     hlayout->addWidget(frame1);
     hlayout->addWidget(frame2);
     hlayout->addLayout(layout1);
