@@ -1,27 +1,27 @@
 #include "win.h"
-
-Win::Win(QWidget *parent)
-    : QWidget(parent)
+#include <iostream>
+Win::Win()
 {
     codec = QTextCodec::codecForName("UTF-8");
     setWindowTitle(codec->toUnicode("Возведение в квадрат"));//Header of form
+ try{
     frame = new QFrame(this);
     frame->setFrameShadow(QFrame::Raised);
-    frame->setFrameShape(QFrame::Panel);//creating and add some attributes to fram(рамка)
-    inputLabel = new QLabel(codec->toUnicode("Введите число:"),//add lable before the editline to widget
-    this);
+    frame->setFrameShape(QFrame::Panel);//creating and add some attributes to frame (рамка)
+    inputLabel = new QLabel(codec->toUnicode("Введите число:"),this);//add lable before the editline to widget
     inputEdit = new QLineEdit("",this);//add edit line to widget
-    StrValidator *v=new StrValidator(inputEdit);//add object validator wich will check string wroted by user
-    inputEdit->setValidator(v);//set validator into editline
-    outputLabel = new QLabel(codec->toUnicode("Результат:"),//add lable for output header
-    this);
+    outputLabel = new QLabel(codec->toUnicode("Результат:"),this);//add lable for output header
     outputEdit = new QLineEdit("",this);// add edit line to output result of calculation
-    nextButton = new QPushButton(codec->toUnicode("Следующее"),//add button for next culculation
-    this);
-    exitButton = new QPushButton(codec->toUnicode("Выход"),//add close button
-    this);
-    calculate = new QPushButton(codec->toUnicode("Вычислить"),this);
-    // компоновка приложения выполняется согласно рисунку 2.
+    nextButton = new QPushButton(codec->toUnicode("Следующее"),this);//add button for next culculation
+    exitButton = new QPushButton(codec->toUnicode("Выход"),this);//add close button
+    calculate = new QPushButton(codec->toUnicode("Вычислить"),this);//add calculate button
+    }
+    catch(std::bad_alloc const&)
+    {
+        std::cout<<"Memory has not been allocated";
+
+    }
+    // компоновка приложения
     QVBoxLayout *vLayout1 = new QVBoxLayout(frame);//create first Box wich will contain next Widgets...
     vLayout1->addWidget(inputLabel);
     vLayout1->addWidget(inputEdit);

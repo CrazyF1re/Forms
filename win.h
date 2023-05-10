@@ -15,7 +15,7 @@ class Win : public QWidget
 {
     Q_OBJECT
 public:
-    Win(QWidget *parent = 0); // конструктор
+    Win(); // конструктор
 protected:
  QTextCodec *codec;
  QFrame *frame; // рамка
@@ -33,14 +33,5 @@ public slots:
 
 };
 
-class StrValidator:public QValidator // класс компонента проверки ввода
-{
-public:
- StrValidator(QObject *parent):QValidator(parent){}
- virtual State validate(QString &str,int &pos)const
- {
-    return Acceptable; // метод всегда принимает вводимую строку
- }
-};
 
 #endif // WIN_H
