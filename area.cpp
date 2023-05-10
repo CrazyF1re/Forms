@@ -1,11 +1,21 @@
 #include "area.h"
+#include <iostream>
 
 Area::Area(QWidget *parent):QWidget(parent)
 {
 setFixedSize(QSize(300,200));
+try
+{
 myline=new MyLine(80,100,50);
 myrect=new MyRect(220,100,50);
+}
+catch(std::bad_alloc const&)
+{
+    std::cout<<"Memory has not been allocated";
+}
+
 alpha=0;
+
 }
 void Area::showEvent(QShowEvent *)
 {
